@@ -1,6 +1,15 @@
 # Commerce 2.x project template
 
-Use [Composer](https://getcomposer.org/) to get Drupal + Commerce 2.x with all dependencies.
+This fork is intended for development and installs the
+[drugan/commerce:8.4-2.x](https://github.com/drugan/commerce)
+version of the [Commerce](https://github.com/drupalcommerce/commerce/) module.
+Also, [Commerce Multistore](https://github.com/drugan/commerce_multistore),
+[Devel (+kint, +webprofiler)](https://www.drupal.org/project/devel) and
+[Color Field](https://www.drupal.org/project/color_field) modules are
+downloaded and installed by default.
+
+Use [Composer](https://getcomposer.org/) to get Drupal + Commerce 2.x with all
+dependencies.
 
 Based on [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project).
 
@@ -15,23 +24,29 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupalcommerce/project-base some-dir --stability dev --no-interaction
+composer create-project --repository=https://raw.githubusercontent.com/drugan/project-base/8.x/packages.json drugan/project-base some-dir --stability dev
 ```
 
 Done! Use `composer require ...` to download additional modules and themes:
 
 ```
 cd some-dir
-composer require "drupal/devel:1.x-dev"
+composer require drupal/examples:"1.x-dev"
 ```
 
 The `composer create-project` command passes ownership of all files to the
 project that is created. You should create a new git repository, and commit
-all files not excluded by the .gitignore file.
+all files not excluded by the `.gitignore` file:
+
+```
+git init
+git commit -a -m "Initial commit"
+```
 
 ## What does the template do?
 
 * Drupal is installed in the `web` directory.
+* Drupal Commerce core modules are placed in `web/modules/commerce_core_modules/`
 * Modules (packages of type `drupal-module`) are placed in `web/modules/contrib/`
 * Theme (packages of type `drupal-theme`) are placed in `web/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) are placed in `web/profiles/contrib/`
@@ -50,7 +65,8 @@ new release of Drupal core.
 
 Follow the steps below to update your core files.
 
-1. Run `composer update drupal/core --with-dependencies` to update Drupal Core and its dependencies.
+1. Run `composer update drupal/core --with-dependencies` to update Drupal Core
+   and its dependencies.
 1. Run `git diff` to determine if any of the scaffolding files have changed.
    Review the files for any changes and restore any customizations to
   `.htaccess` or `robots.txt`.
@@ -59,15 +75,17 @@ Follow the steps below to update your core files.
 1. In the event that there are non-trivial conflicts in step 2, you may wish
    to perform these steps on a branch, and use `git merge` to combine the
    updated core files with your customized files. This facilitates the use
-   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple;
+   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html).
+   Alternatively, you may set up [extMerge](https://gist.github.com/drugan/72ddb1a7f0d6db14dcb7b59825b37928)
+   as the merging tool. This setup is not necessary if your changes are simple;
    keeping all of your modifications at the beginning or end of the file is a
    good strategy to keep merges easy.
 
 ## Generate composer.json from existing project
 
 With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
+you can now generate a basic `composer.json` file from an existing project.
+Note that the generated `composer.json` might differ from this project's file.
 
 ## FAQ
 
@@ -82,7 +100,7 @@ The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin
 index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
 to not check them into your version control system (e.g. git). If that is the case for your project it might be
 convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
+achieve that by registering `@drupal-scaffold` as post-install and post-update command in your `composer.json`:
 
 ```json
 "scripts": {
@@ -97,6 +115,12 @@ achieve that by registering `@drupal-scaffold` as post-install and post-update c
     ]
 },
 ```
+
+### Can I commit the entire project including nested git repositories?
+
+Please, follow [this guide](https://gist.github.com/drugan/fd81d791d52c815f898e3bdd3af7dbef).
+
+
 ### How can I apply patches to downloaded modules?
 
 If you need to apply patches (depending on the project being modified, a pull
@@ -104,7 +128,7 @@ request is often a better solution), you can do so with the
 [composer-patches](https://github.com/cweagans/composer-patches) plugin.
 
 To add a patch to drupal module foobar insert the patches section in the extra
-section of composer.json:
+section of `composer.json`:
 ```json
 "extra": {
     "patches": {

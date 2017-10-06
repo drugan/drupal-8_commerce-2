@@ -18,6 +18,10 @@
             "type": "vcs",
             "url": "https://github.com/drugan/commerce_base"
         },
+        "commerce": {
+            "type": "vcs",
+            "url": "https://github.com/drugan/commerce"
+        },
         "commerce_multistore": {
             "type": "vcs",
             "url": "https://github.com/drugan/commerce_multistore"
@@ -35,13 +39,14 @@
         "drupal/admin_toolbar": "~1.0",
         "drupal/console": "~1.0",
         "drupal/core": "~8.4",
-        "drupal/commerce": "2.x-dev",
+        "drupal/commerce": "dev-8.4-2.x",
         "drupal/search_api": "~1.0",
         "drupal/swiftmailer": "~1.0",
         "drupalcommerce/commerce_base": "dev-8.x-1.x",
         "webflo/drupal-finder": "^0.3.0",
         "webmozart/path-util": "^2.3",
-        "drupal/commerce_multistore": "dev-master"
+        "drupal/devel": "1.x-dev",
+        "drupal/color_field": "2.x-dev"
     },
     "require-dev": {
         "behat/mink": "1.7.x-dev",
@@ -84,6 +89,18 @@
             ],
             "web/libraries/{$name}": [
                 "type:drupal-library"
+            ],
+            "web/modules/commerce_core_modules/{$name}": [
+                "drupal/address",
+                "drupal/commerce",
+                "drupal/entity",
+                "drupal/entity_reference_revisions",
+                "drupal/inline_entity_form",
+                "drupal/mailsystem",
+                "drupal/profile",
+                "drupal/search_api",
+                "drupal/state_machine",
+                "drupal/swiftmailer"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"
