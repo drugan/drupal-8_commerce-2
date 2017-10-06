@@ -35,7 +35,7 @@
         "drupal/admin_toolbar": "~1.0",
         "drupal/console": "~1.0",
         "drupal/core": "~8.4",
-        "drupal/commerce": "~2.0",
+        "drupal/commerce": "2.x-dev",
         "drupal/search_api": "~1.0",
         "drupal/swiftmailer": "~1.0",
         "drupalcommerce/commerce_base": "dev-8.x-1.x",
