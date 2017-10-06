@@ -16,7 +16,7 @@
         },
         "commerce_base": {
             "type": "vcs",
-            "url": "https://github.com/drupalcommerce/commerce_base"
+            "url": "https://github.com/drugan/commerce_base"
         }
     },
     "config": {
