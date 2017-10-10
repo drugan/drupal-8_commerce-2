@@ -4,7 +4,7 @@ This fork is intended for development and installs the
 [drugan/commerce:8.4-2.x](https://github.com/drugan/commerce)
 version of the [Commerce](https://github.com/drupalcommerce/commerce/) module.
 Also, [Commerce Multistore](https://github.com/drugan/commerce_multistore),
-[Devel (+kint, +webprofiler)](https://www.drupal.org/project/devel) and
+[Devel+kint+webprofiler](https://www.drupal.org/project/devel) and
 [Color Field](https://www.drupal.org/project/color_field) modules are
 downloaded and installed by default.
 
@@ -40,7 +40,8 @@ all files not excluded by the `.gitignore` file:
 
 ```
 git init
-git commit -a -m "Initial commit"
+git add .
+git commit -m "Initial commit"
 ```
 
 ## What does the template do?
